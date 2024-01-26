@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home Page</title>
 </head>
 <body>
-    <h1>I sm server</h1>
+   <h1>Home Page</h1>
+   <div>
+    <form method="POST" action="/url">
+        <label>Enter your original URL</label>
+        <input type="text" placeholder="https//example.com" name="url">
+        <button type="submit">Generate</button>
+    </form>
+   </div>
 </body>
 </html>
