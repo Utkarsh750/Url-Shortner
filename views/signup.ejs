@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color:beige;
+            font-size:medium;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signup</title>
 </head>
 <body>
     <h1>Sign up</h1>
+
+    <form action="/user" method="post">
+        <label>Full Name</label>
+        <input type="text" required name="name">
+        <label>Email</label>
+        <input type="text" required name="email">
+        <label>Password</label>
+        <input type="text" required name="password">
+
+        <button type="submit">Signup</button>
+    </form>
 </body>
 </html>

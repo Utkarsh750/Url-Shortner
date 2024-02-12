@@ -11,4 +11,6 @@ async function handleUserSignup(req, res) {
   return res.render("home");
 }
 
-module.exports = handleUserSignup;
+module.exports = {
+  handleUserSignup,
+};
