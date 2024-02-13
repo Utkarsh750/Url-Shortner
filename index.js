@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 const { connectToMongoDB } = require("./connection");
 
 const URL = require("./models/url");
@@ -7,6 +8,7 @@ const URL = require("./models/url");
 const urlRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
 const userRoute = require("./routes/user");
+const { restrictToLoggedInUserOnly } = require("./middleware/auth");
 
 const app = express();
 const PORT = 8001;
@@ -20,6 +22,7 @@ app.set("views", path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // app.get("/test", async (req, res) => {
 //   const allUrls = await URL.find({});
@@ -30,7 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/hello", (req, res) => {
   res.send("hello");
 });
-app.use("/url", urlRoute);
+app.use("/url", restrictToLoggedInUserOnly, urlRoute);
 app.use("/user", userRoute);
 app.use("/", staticRoute);
 
