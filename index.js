@@ -27,7 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 //     urls: allUrls,
 //   });
 // });
-
+app.get("/hello", (req, res) => {
+  res.send("hello");
+});
 app.use("/url", urlRoute);
 app.use("/user", userRoute);
 app.use("/", staticRoute);
