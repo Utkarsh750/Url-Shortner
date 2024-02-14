@@ -24,15 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.get("/test", async (req, res) => {
-//   const allUrls = await URL.find({});
-//   return res.render("home", {
-//     urls: allUrls,
-//   });
-// });
-app.get("/hello", (req, res) => {
-  res.send("hello");
-});
+
 app.use("/url", restrictToLoggedInUserOnly, urlRoute);
 app.use("/user", userRoute);
 app.use("/", staticRoute);

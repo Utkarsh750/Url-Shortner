@@ -10,10 +10,10 @@ async function handleUserSignup(req, res) {
     password,
   });
 
-  return res.render("/");
+  return res.redirect("/");
 }
 
-async function handleUserSignin(req, res) {
+async function handleUserLogin(req, res) {
   const { email, password } = req.body;
   const user = await User.findOne({ email, password });
   if (!user) {
@@ -24,9 +24,9 @@ async function handleUserSignin(req, res) {
   const sessionId = uuidv4;
   setUser(sessionId, user);
   res.cookie("uid", sessionId);
-  res.redirect("/");
+  return res.redirect("/");
 }
 module.exports = {
   handleUserSignup,
-  handleUserSignin,
+  handleUserLogin,
 };
