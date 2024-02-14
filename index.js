@@ -8,7 +8,7 @@ const URL = require("./models/url");
 const urlRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
 const userRoute = require("./routes/user");
-const { restrictToLoggedInUserOnly } = require("./middleware/auth");
+// const { restrictToLoggedInUserOnly } = require("./middleware/auth");
 
 const app = express();
 const PORT = 8001;
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.use("/url", restrictToLoggedInUserOnly, urlRoute);
+app.use("/url", urlRoute);
 app.use("/user", userRoute);
 app.use("/", staticRoute);
 
